@@ -1,0 +1,44 @@
+#!/bin/bash
+
+BASE="/var/log/satellite"
+LOG_PASS_STATUS="$BASE/monit_passenger.log"
+LOG_PASS_MEMORY="$BASE/monit_passenger_memory.log"
+LOG_PASS_REQS="$BASE/monit_passenger_requests.log"
+LOG_WHOLE_PROCESS="$BASE/monit_whole_process.log"
+LOG_QPID_Q="$BASE/monit_qpid_q.log"
+LOG_QPID_G="$BASE/monit_qpid_g.log"
+LOG_QPID_U="$BASE/monit_qpid_u.log"
+LOG_QPID_C="$BASE/monit_qpid_c.log"
+
+mkdir -p $BASE
+# Passenger status
+cat <<ENDPASS >> $LOG_PASS_STATUS
+$(date)
+---B
+$(passenger-status)
+---E
+ENDPASS
+
+# Passenger memory status
+cat <<ENDPASS >> $LOG_PASS_MEMORY
+$(date)
+---B
+$(passenger-memory-stats)
+---E
+ENDPASS
+
+# Passenger requests
+cat <<ENDPASS >> $LOG_PASS_REQS
+$(date)
+---B
+$(passenger-status --show=requests)
+---E
+ENDPASS
+
+# Whole process
+cat <<ENDPASS >> $LOG_WHOLE_PROCESS
+$(date)
+---B
+$(ps -aux --sort -rss,pid)
+---E
+ENDPASS
