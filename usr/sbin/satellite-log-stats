@@ -5,10 +5,6 @@ LOG_PASS_STATUS="$BASE/monit_passenger.log"
 LOG_PASS_MEMORY="$BASE/monit_passenger_memory.log"
 LOG_PASS_REQS="$BASE/monit_passenger_requests.log"
 LOG_WHOLE_PROCESS="$BASE/monit_whole_process.log"
-LOG_QPID_Q="$BASE/monit_qpid_q.log"
-LOG_QPID_G="$BASE/monit_qpid_g.log"
-LOG_QPID_U="$BASE/monit_qpid_u.log"
-LOG_QPID_C="$BASE/monit_qpid_c.log"
 
 mkdir -p $BASE
 # Passenger status
